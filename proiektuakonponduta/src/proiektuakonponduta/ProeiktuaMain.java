@@ -5,6 +5,7 @@ package proiektuakonponduta;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -67,6 +68,7 @@ public class ProeiktuaMain {
 				Autoak autoa = new Autoak();
 
 				System.out.println("Sartu autoaren Marka");
+				sc.nextLine();
 				String markaString = sc.nextLine();
 				sc.nextLine();
 				autoa.SetMarka(markaString);
@@ -96,6 +98,10 @@ public class ProeiktuaMain {
 				Autozerrenda.add(autoa);
 				autoa.autoberria();
 				System.out.println("Autoa gehitu da");
+				for (Autoak auto : Autozerrenda) {
+		            System.out.println(auto);
+		        }
+				
 				sc.close();
 			}
 
@@ -136,20 +142,39 @@ public class ProeiktuaMain {
 
 
 			System.out.println("Autoak ikusi  aukeratu duzu");
+			
+			
+			 List<String> markabakarrakList = Autoak.LortumarkabakarrakList(Autozerrenda);
+			 
+			 System.out.println("Erabilgarri dauden markak:");
+		        for (String marca : markabakarrakList) {
+		            System.out.println(marca);
+		        }
 
-		}
+		        
+		       
+		        Scanner scanner = new Scanner(System.in);
+		        System.out.print("Zein auto ikusi nahi duzu: ");
+		        String aukeratutakomarka = scanner.nextLine();
+
+		       
+		        Autoak.AutoakMarkaBidez(Autozerrenda, aukeratutakomarka);
+		    }
+
+			
 
 		else if (aukera == 4) {
 
 			System.out.println("Autoak kop   aukeratu duzu");
+			
+			 int cantidadTotalCoches = Autoak.AutoakZenbatu(Autozerrenda);
+		        System.out.println("Auto kopurua: " + cantidadTotalCoches);
+		    
 
 		}
 		else {
 			System.out.println("Autatutako zenbakiak ez du balio");
 		}
-
-
-
 
 
 

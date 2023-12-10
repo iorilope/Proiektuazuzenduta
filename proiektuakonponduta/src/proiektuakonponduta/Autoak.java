@@ -4,6 +4,10 @@
  */
 package proiektuakonponduta;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 /**
  * The Class Autoak.
  */
@@ -61,7 +65,7 @@ public class Autoak {
 	 * @param Door_Amount the Ate_Kop
 	 * @param consumption the Kontsumoa
 	 */
-	Autoak (String Model,String Brand,int PeopleAmount,String Fuel,int Door_Amount,double consumption) {
+	Autoak (String Brand,String Model,int PeopleAmount,String Fuel,int Door_Amount,double consumption) {
 		Marka = Brand;
 		Modeloa = Model;
 		Pertsona_kop=PeopleAmount;
@@ -156,6 +160,10 @@ public String GetMarka (String Brand) {
 	
 	return this.Marka;
 }
+public String GetMarka () {
+	
+	return this.Marka;
+}
 
 /**
  * Gets the modeloa.
@@ -224,8 +232,42 @@ static void erakutsiAutoak() {
 	System.out.println (Auto_Kop);
 }
 
+public static void AutoakIkusi(ArrayList<Autoak> Autozerrenda) {
+    if (Autozerrenda.isEmpty()) {
+        System.out.println("Auto zerrenda hutsik dago");
+        return;
+    }
 
+    System.out.println("Autoen zerrenda:");
+    for (Autoak autoa : Autozerrenda) {
+        System.out.println(autoa);
+    }
+}
 
+public static List<String> LortumarkabakarrakList(List<Autoak> Autozerrenda) {
+    List<String> markabakarrakList = new ArrayList<>();
+
+    for (Autoak autoa : Autozerrenda) {
+        String marca = autoa.GetMarka();
+        if (!markabakarrakList.contains(marca)) {
+        	markabakarrakList.add(marca);
+        }
+    }
+
+    return markabakarrakList;
+}
+
+public static void AutoakMarkaBidez(List<Autoak> Autozerrenda, String aukeratutakomarka) {
+    System.out.println("Marka Honetako autoak: " + aukeratutakomarka + ":");
+    for (Autoak autoa : Autozerrenda) {
+        if (autoa.GetMarka().equalsIgnoreCase(aukeratutakomarka)) {
+            System.out.println(autoa);
+        }
+    }
+}
+public static int AutoakZenbatu(List<Autoak> Autozerrenda) {
+    return Autozerrenda.size();
+}
 
 
 
