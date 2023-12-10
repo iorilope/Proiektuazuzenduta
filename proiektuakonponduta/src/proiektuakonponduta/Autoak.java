@@ -1,6 +1,6 @@
 /*
  * 2023(e)ko aza. 29(a)
- * Ioritz Lopetegi
+ * 
  */
 package proiektuakonponduta;
 
