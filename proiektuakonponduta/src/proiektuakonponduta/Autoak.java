@@ -30,6 +30,7 @@ public class Autoak {
 	
 	/**  Ate kop. */
 	public int Ate_Kop;
+
 	
 	/**  kontsumoa. */  //100km-ro gastatutako L- kopurua
 	public double kontsumoa;

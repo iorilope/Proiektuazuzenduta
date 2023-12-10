@@ -44,15 +44,17 @@ public class ProeiktuaMain {
 
 		int aukera;
 		do {
-
-
-			aukera = sc.nextInt();
-			if (aukera != 1 && aukera != 2 && aukera != 3 && aukera != 4) {
-
-				System.out.println("Autatutako zenbakiak ez du balio, sartu berriro (1-4)");
-			}
-
-		} while (aukera !=1 && aukera !=2  && aukera !=3  && aukera !=4);
+            try {
+                aukera = sc.nextInt();
+                if (aukera < 1 || aukera > 4) {
+                    System.out.println("Autatutako zenbakiak ez du balio, sartu berriro (1-4)");
+                }
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Sartu duzun balioa ez da zenbaki bat. Mesedez, zenbaki bat sartu.");
+                sc.nextLine();
+                aukera = 0; 
+            }
+        } while (aukera < 1 || aukera > 4);
 
 
 		if (aukera == 1) {
@@ -60,8 +62,13 @@ public class ProeiktuaMain {
 			System.out.println("Autoa gehitu aukeratu duzu");
 
 			System.out.println("Zenbat auto sartu nahi dituzu");
-			int kopurua;
-			kopurua = sc.nextInt();
+			int kopurua=0;
+			try {
+                kopurua = sc.nextInt();
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Sartu duzun balioa ez da zenbaki bat. Programa itxiko da.");
+                System.exit(0);
+            }
 
 			for (int i = 0; i < kopurua; i++) 
 			{
@@ -92,7 +99,13 @@ public class ProeiktuaMain {
 				autoa.SetAte_Kop(atekopurua);
 
 				System.out.println("Sartu Kontsumoa L/100km");
-				double kontsumoaa = sc.nextDouble();
+				double kontsumoaa= 0;
+				 try {
+	                  kontsumoaa = sc.nextDouble();
+	                } catch (java.util.InputMismatchException e) {
+	                    System.out.println("Sartu duzun balioa ez da zenbaki bat. Programa itxiko da.");
+	                    System.exit(0);
+	                }
 				autoa.SetKontsumoa(kontsumoaa);
 
 				Autozerrenda.add(autoa);
@@ -122,7 +135,14 @@ public class ProeiktuaMain {
 			
 			 
 			    System.out.print("Sartu kendu nahi duzun autoaren zenbakia : ");
-			    int aukera2 = sc.nextInt();
+			    int aukera2 = 0;
+			    try {
+			        aukera2 = sc.nextInt();
+			    } catch (java.util.InputMismatchException e) {
+			        System.out.println("Errorea: Sartu duzun balioa ez da zenbaki bat.");
+			        
+			        sc.nextLine();
+			    }
 			    
 			    if (aukera2 > 0 && aukera2 <= Autozerrenda.size()) {
 			       
@@ -155,11 +175,21 @@ public class ProeiktuaMain {
 		       
 		        Scanner scanner = new Scanner(System.in);
 		        System.out.print("Zein auto ikusi nahi duzu: ");
-		        String aukeratutakomarka = scanner.nextLine();
+		        String aukeratutakomarka = "";
 
 		       
-		        Autoak.AutoakMarkaBidez(Autozerrenda, aukeratutakomarka);
-		    }
+		        try {
+		            aukeratutakomarka = scanner.nextLine();
+		            Autoak.AutoakMarkaBidez(Autozerrenda, aukeratutakomarka);
+		        } catch (java.util.InputMismatchException e) {
+		            System.out.println("Errorea: Sartu duzun balioa ez da onargarria.");
+		        } catch (Exception e) {
+		            System.out.println("Errorea: " + e.getMessage());
+		        } finally {
+		            // Si necesitas realizar alguna operación de limpieza, puedes hacerlo en el bloque finally
+		            // Por ejemplo, cerrar el Scanner
+		            sc.close();
+		        }}
 
 			
 
