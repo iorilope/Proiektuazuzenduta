@@ -20,21 +20,18 @@ public class ProeiktuaMain {
 	 *
 	 * @param args the arguments
 	 */
-
-
+	
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-
-
 
 		ArrayList<Autoak> Autozerrenda = new ArrayList<Autoak>();
 
 		//Auto batzuk sortu
 		Autozerrenda.add(new Autoak("Mercedes", "Benz", 5, "Gasolina", 4, 10.5));
-		Autozerrenda.add(new Autoak("BMW", "Marca2", 4, "Diesel", 2, 8.0));
-		Autozerrenda.add(new Autoak("Toyota", "Serie 1", 7, "Hibrido", 5, 15.2));
-
+		Autozerrenda.add(new Autoak("BMW", "Serie 1", 4, "Diesel", 2, 8.0));
+		Autozerrenda.add(new Autoak("BMW", "Serie 5", 4, "Diesel", 2, 6.0));
+		Autozerrenda.add(new Autoak("Toyota", "Corolla", 7, "Hibrido", 5, 15.2));
 
 		System.out.println("==================================================================");
 		System.out.println("    Sartu zure aukera");

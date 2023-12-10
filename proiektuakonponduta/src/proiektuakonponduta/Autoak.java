@@ -237,9 +237,6 @@ public class Autoak {
 
 	}
 
-
-
-
 	/**
 	 * Autoak ikusi.
 	 *
